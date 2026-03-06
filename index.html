@@ -1,32 +1,135 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="luxury">
+<html lang="ru" data-theme="luxury">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Metal-Profil</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Raleway', sans-serif;
+        }
+        h1, h2, .brand {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .photo-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .photo-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .contact-pulse {
+            animation: subtlePulse 3s ease-in-out infinite;
+        }
+        @keyframes subtlePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.04); }
+        }
+
+        .divider-line {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, gold, transparent);
+            margin: 0 auto;
+        }
+
+        /* Gold shimmer on brand name */
+        .brand-shimmer {
+            background: linear-gradient(90deg, #b8960c, #f5d060, #b8960c);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s linear infinite;
+        }
+        @keyframes shimmer {
+            to { background-position: 200% center; }
+        }
+
+        .tg-btn {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .tg-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
+        }
+    </style>
 </head>
 
+<body class="min-h-screen bg-base-200 text-base-content">
 
-<body>
-    <div class='flex flex-col items-center justify-center p-4'>
-        <div class='flex gap-4'>
-            <img src="photo1.jpg" class="size-150 " alt="" />
-            <img src="photo2.jpg" class="size-150 " alt="" />
-            <img src="photo3.jpg" class="size-150 " alt="" />
-        </div>
-        <div class='flex flex-col items-center gap-4 mt-4'>
-            <a href="https://t.me/metal_profil" target="_blank">
-                <img src="tglogo.png" class="size-30" alt="" />
+    <!-- Header -->
+    <header class="w-full py-6 px-4 text-center border-b border-base-300">
+        <h2 class="brand brand-shimmer text-3xl sm:text-4xl md:text-5xl font-bold tracking-widest uppercase">
+            Metal-Profil
+        </h2>
+        <div class="divider-line mt-3"></div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 py-10 flex flex-col items-center gap-12">
+
+        <!-- Photo Gallery -->
+        <section class="w-full">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+                <div class="photo-card rounded-2xl overflow-hidden shadow-lg aspect-[1/2]">
+                    <img src="photo1.jpg" class="w-full h-full object-cover" alt="Фото 1" />
+                </div>
+                <div class="photo-card rounded-2xl overflow-hidden shadow-lg aspect-[1/2]">
+                    <img src="photo2.jpg" class="w-full h-full object-cover" alt="Фото 2" />
+                </div>
+                <div class="photo-card rounded-2xl overflow-hidden shadow-lg aspect-[1/2] sm:col-span-2 md:col-span-1">
+                    <img src="photo3.jpg" class="w-full h-full object-cover" alt="Фото 3" />
+                </div>
+            </div>
+        </section>
+
+        <div class="divider-line"></div>
+
+        <!-- Contact Section -->
+        <section class="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-16 w-full">
+
+            <!-- Telegram -->
+            <a href="https://t.me/metal_profil" target="_blank" class="tg-btn flex flex-col items-center gap-3 group">
+                <div class="bg-base-100 rounded-full p-4 shadow-lg border border-base-300">
+                    <img src="tglogo.png" class="w-16 h-16 sm:w-20 sm:h-20" alt="Telegram" />
+                </div>
+                <span class="text-sm tracking-widest uppercase opacity-60 group-hover:opacity-100 transition-opacity">
+                    Telegram
+                </span>
             </a>
 
-            <h1 class='text-3xl'>+998 90 671 11 10</h1>
-        </div>
-    </div>
-</body>
+            <!-- Divider (vertical on desktop) -->
+            <div class="hidden sm:block w-px h-20 bg-base-300"></div>
+            <div class="sm:hidden w-16 h-px bg-base-300"></div>
 
+            <!-- Phone -->
+            <div class="contact-pulse flex flex-col items-center gap-3">
+                <div class="bg-base-100 rounded-full p-4 shadow-lg border border-base-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 sm:w-20 sm:h-20 opacity-70" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                    </svg>
+                </div>
+                <a href="tel:+998906711110"
+                   class="text-xl sm:text-2xl md:text-3xl font-semibold tracking-wider hover:opacity-80 transition-opacity">
+                    +998 90 671 11 10
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full text-center py-6 mt-10 border-t border-base-300 opacity-40 text-xs tracking-widest uppercase">
+        © Metal-Profil
+    </footer>
+
+</body>
 </html>
